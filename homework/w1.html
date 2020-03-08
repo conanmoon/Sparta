@@ -22,16 +22,6 @@
                 font-family: 'Stylish', sans-serif;
             }
 
-            .wrap {
-                margin: auto;
-                width: 800px;
-                height: 800px;
-            }
-
-            .wrap2 {
-                margin: 10px;
-            }
-
             .form-post {
                 max-width: 1000px;
                 height: 1000px;
@@ -43,10 +33,6 @@
                 display: block;
 
 
-            }
-
-            .card {
-                margin: 10px;
             }
 
             .text_1{
@@ -84,6 +70,11 @@
                 height: 350px;
                 width: 1000px;
             }
+
+            .form_2{
+                text-align: left;
+                margin: auto;
+            }
         </style>
 
         <!-- JS -->
@@ -110,20 +101,32 @@
         <p class="text_2"> 그래서 그 답을 옛날의 지혜로운 사람들에게서 찾아본다. 소크라테스, 조르다노 브루노, 공자, 맹자, 니체, 에리히 프롬 등등.</p>
         <p class="text_2"> 그들에게 지금 당신의 삶의 고민에 대해 묻고 싶다면 응답하라.</p>
         <h2 class="text_2"> 응답하기</h2> 
-        <div>
-        <p>
-            응답자 성함: &nbsp; <input type="text">
-        </p>
-        <p>
-            수량(몇 사람을 위해?): &nbsp; <input type="text">
-        </p>
-        <p>
-            당신의 주소: &nbsp; <input type="text">
-        </p>
-        <p>
-            당신의 전화번호: &nbsp; <input type="text">
-        </p>
-        </div>
+        <form class = "form_2">
+            <div class="form-group row">
+                <label for="inputbox" class="col-sm-2 col-form-label">응답자 성함:</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="inputbox">
+                </div>
+              </div>
+            <div class="form-group row">
+                <label for="inputbox" class="col-sm-2 col-form-label">몇 사람을 위해?:</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="inputbox">
+                </div>
+              </div>
+            <div class="form-group row">
+              <label for="inputbox" class="col-sm-2 col-form-label">전화번호:</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="inputbox">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="inputbox" class="col-sm-2 col-form-label">주소:</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="inputbox">
+              </div>
+            </div>
+        </form>
         <p class="lead">
             <a class="btn btn-primary btn-lg" href="#" role="button">포스팅박스 열기</a>
         </p>
