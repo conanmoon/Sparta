@@ -87,7 +87,48 @@
                 text-align: right;
             }
         </style>
+        <script>
+            function alert_1(){
+            let txt_1 = $('#name_2').val();
+                if (txt_1 == '') {
+                    alert('이름을 입력하세요!');
+            } else {
+                    alert(txt_1);
+            }
 
+            let txt_2 = $('#num_2').val();
+                if (txt_2 == '') {
+                    alert('수량을 입력하세요!');
+            } else {
+                    alert(txt_2);
+            }
+
+            let txt_3 = $('#phone_2').val();
+                if (txt_3 == '') {
+                    alert('전화번호를 입력하세요!');
+            } else {
+                    alert(txt_3);
+            }
+
+            let txt_4 = $('#add_2').val();
+                if (txt_4 == '') {
+                    alert('주소를 입력하세요!');
+            } else {
+                    alert(txt_4);
+            }
+
+ 
+            }
+
+
+
+
+            // focus(function(alert_1) {
+            //     if($('#inputbox').val() == '' || $('#inputGroupSelect04').val() == 'none') {           
+            //         alert($('.form-group-row')+'을(를) 입력하세요!')
+            // }
+            // }
+        </script>
         <!-- JS -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
@@ -116,16 +157,16 @@
         <h2 class="text_2"> 응답하기</h2> 
         <form class = "form_2">
             <div class="form-group row">
-                <label for="inputbox" class="col-sm-2 col-form-label">응답자 성함:</label>
+                <label for="inputbox" class="col-sm-2 col-form-label" id = "name_1">응답자 성함:</label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" id="inputbox">
+                  <input type="text" class="form-control" id="name_2"/>
                 </div>
               </div>
             <div class="form-group row">
-                <label for="inputbox" class="col-sm-2 col-form-label">몇 사람을 위해?:</label>
+                <label for="inputbox" class="col-sm-2 col-form-label" id = "num_1">몇 사람을 위해?:</label>
                 <div class="col-sm-10">
                       <div class="input-group form-control">
-                        <select class="custom-select" id="inputGroupSelect04">
+                        <select lass="custom-select" id="num_2">
                           <option selected>세 명까지 가능</option>
                           <option value="1">한 명</option>
                           <option value="2">두 명</option>
@@ -138,20 +179,20 @@
                 </div>
               </div>
             <div class="form-group row">
-              <label for="inputbox" class="col-sm-2 col-form-label">전화번호:</label>
+              <label for="inputbox" class="col-sm-2 col-form-label" id="phone_1">전화번호:</label>
               <div class="col-sm-10">
-                <input type="text" class="form-control" id="inputbox">
+                <input type="text" class="form-control" id="phone_2"/>
               </div>
             </div>
             <div class="form-group row">
-              <label for="inputbox" class="col-sm-2 col-form-label">주소:</label>
+              <label for="inputbox" class="col-sm-2 col-form-label" id = "add_1">주소:</label>
               <div class="col-sm-10">
-                <input type="text" class="form-control" id="inputbox">
+                <input type="text" class="form-control" id="add_2"/>
               </div>
             </div>
         </form>
         <p class="lead">
-            <a class="btn btn-primary btn-lg" href="#" role="button">횃불 켜기</a>
+            <button onclick="alert_1()" class="btn btn-primary btn-lg" role="button">횃불 켜기</button>
         </p>
     </div>
 </body>
