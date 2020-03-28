@@ -21,4 +21,5 @@ for a in music:
     artist = a.select_one('td.info > a.artist').text
     if (rank is not None and song is not None and artist is not None):
         # a의 text를 찍어본다.
-        print(rank, song.strip(), '-s ', artist)
+        print(rank, song.strip(), '- ', artist)
+

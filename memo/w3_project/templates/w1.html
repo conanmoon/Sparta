@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <head>
+
+        <!-- Webpage Title -->
+        <title>지금, 당신에게 필요한 것.</title>
+
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+            integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Stylish&amp;display=swap" rel="stylesheet">
+
+        <style type="text/css">
+            * {
+                font-family: 'Stylish', sans-serif;
+            }
+
+            .form-post {
+                max-width: 1000px;
+                height: 1000px;
+                padding: 2rem;
+                margin: 2rem auto;
+                border-color: black;
+                border-radius: 0.3rem;
+                border: solid;
+                display: block;
+
+
+            }
+
+            .text_1 {
+                text-align: center;
+            }
+
+            .text_2 {
+                text-align: left;
+                font-weight: 1000;
+            }
+
+            .text_3 {
+                text-align: left: font-weight: 1000px;
+                text-emphasis: bold;
+                margin: auto;
+            }
+
+            .post_2 {
+                padding: 0;
+                margin: 0.5rem auto;
+                border-color: black;
+                border-radius: 0.3rem;
+                border: solid;
+                display: block;
+                max-width: 800px;
+                height: 300px;
+                text-align: top;
+            }
+
+            .form-control {
+                width: 300px;
+
+            }
+
+            .img_2 {
+                height: 350px;
+                width: 1000px;
+            }
+
+            .form_2 {
+                text-align: left;
+                margin: auto;
+            }
+
+            .my-header h2 {
+                display: inline;
+            }
+
+            .my-header span {
+                text-align: left;
+            }
+
+            .my-header-2 {
+                display: inline text-align: right;
+            }
+        </style>
+        <script>
+            function alert_1() {
+                let name = $("#name").val();
+                if (name == '') {
+                    alert('이름을 입력하세요!');
+                    $('#name').focus();
+                } //else {
+                //         alert(txt_1);
+                // }
+
+                let number = $("#number").val();
+                if (number == '세 명까지 가능') {
+                    alert('수량을 입력하세요!');
+                    $("#number").focus();
+                } //else {
+                //      alert(txt_2);
+                //}
+
+                let phone = $("#phone").val();
+                if (phone == '') {
+                    alert('전화번호를 입력하세요!');
+                    $("#phone").focus();
+                } //else {
+                //         alert(txt_3);
+                // }
+
+                let address = $("#address").val();
+                if (address == '') {
+                    alert('주소를 입력하세요!');
+                    $("#address").focus();
+                } //else {
+                //         alert(txt_4);
+                // }
+                $.ajax({
+                    type: "POST",
+                    url: "/receiver",
+                    data: { name_give: name, number_give: number, phone_give: phone, address_give: address },
+                    success: function (response) {
+                        if (response['result'] == 'success') {
+                            alert(response['msg']);
+                            $('#name').val('');
+                            $('#number').val('');
+                            $('#phone').val('');
+                            $('#address').val('');
+                            window.location.reload();
+                        }
+                    }
+                })
+
+            }
+
+            $(document).ready(function () {
+                $('#orders-box').html('');
+                listing();
+            });
+
+            function listing() {
+                $.ajax({
+                    type: "GET",
+                    url: "/receiver",
+                    data: {},
+                    success: function (response) {
+                        if (response['result'] == 'success') {
+                            let receiver = response['receiver'];
+                            for (let i = 0; i < receiver.length; i++) {
+                                make_card(receiver[i]['name'], receiver[i]['number'], receiver[i]['phone'], receiver[i]['address']);
+                            }
+                        } else {
+                            alert('리뷰를 받아오지 못했습니다');
+                        }
+                    }
+                })
+            }
+
+            function make_card(name, number, phone, address) {
+                let temp_html = '<tr>\
+                                <td>'+ name + '</td>\
+                                <td>'+ number + '</td>\
+                                <td>'+ phone + '</td>\
+                                <td>'+ address + '</td>\
+                            </tr>';
+                $('#orders-box').append(temp_html);
+            }
+
+
+
+            // focus(function(alert_1) {
+            //     if($('#inputbox').val() == '' || $('#inputGroupSelect04').val() == 'none') {           
+            //         alert($('.form-group-row')+'을(를) 입력하세요!')
+            // }
+            // }
+        </script>
+        <!-- JS -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+
+    </head>
+</head>
+
+<body>
+    <div class="form-post">
+        <img class="post_2 img_2" src="https://www.pnas.org/content/pnas/116/10/3948/F1.large.jpg" alt="Card image cap">
+        <div class="my-header">
+            <h2 class="text_3">철학 </h2>
+            <span>가격: 측정불가</span>
+        </div>
+        <div style="clear:both"></div>
+        <hr class="my-4">
+        <p class="text_2"> 고된 삶, 정말 삶은 이렇게 고되야만 하는가. 반복되는 일상 어느새 내가 기계가 되어가는 듯하다고 느끼는 사람들에게 필요한 처방.</p>
+        <p class="text_2"> 아무도 내게 어떻게 살아야 하는지 가르쳐 주지 않았다. 그러나 삶의 많은 순간에는 누군가의 도움이 필요하다는 사실에는 변함이 없다. </p>
+        <p class="text_2"> 그래서 그 답을 옛날의 지혜로운 사람들에게서 찾아본다. 소크라테스, 조르다노 브루노, 공자, 맹자, 니체, 에리히 프롬 등등.</p>
+        <p class="text_2"> 그들에게 지금 당신의 삶의 고민에 대해 묻고 싶다면 응답하라.</p>
+        <h2 class="text_2"> 응답하기</h2>
+        <form class="form_2">
+            <div class="form-group row">
+                <label for="inputbox" class="col-sm-2 col-form-label" id="name_1">응답자 성함:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="name" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="inputbox" class="col-sm-2 col-form-label" id="num_1">몇 사람을 위해?:</label>
+                <div class="col-sm-10">
+                    <div class="input-group form-control">
+                        <select lass="custom-select" id="number">
+                            <option selected>세 명까지 가능</option>
+                            <option value="1">한 명</option>
+                            <option value="2">두 명</option>
+                            <option value="3">세 명</option>3</option>
+                        </select>
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary" type="button">고르시요</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="inputbox" class="col-sm-2 col-form-label" id="phone_1">전화번호:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="phone" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="inputbox" class="col-sm-2 col-form-label" id="add_1">주소:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="address" />
+                </div>
+            </div>
+        </form>
+        <p class="lead">
+            <button onclick="alert_1()" class="btn btn-primary btn-lg" role="button">횃불 켜기</button>
+        </p>
+        <div class="orders">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th class="meta_info" scope="col">이름</th>
+                        <th class="meta_info" scope="col">수량</th>
+                        <th class="meta_info" scope="col">전화번호</th>
+                        <th class="meta_info" scope="col">주소</th>
+                    </tr>
+                </thead>
+                <tbody id="orders-box">
+                    <tr>
+                        <td>유명해</td>
+                        <td>명</td>
+                        <td>010-1234-5678</td>
+                        <td>지구</td>                        
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>
